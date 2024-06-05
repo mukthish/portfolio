@@ -11,20 +11,19 @@
         "name": "Mukthish B",
         "titles": [
             "Front-end Developer",
-            "Senior Data Engineer",
-            "Dev Team lead",
+            "Quantitative Analyst",
             "Mobile App Developer"
         ],
         "social": [
             {
                 "name": "github",
-                "url": "https://github.com",
+                "url": "https://github.com/mukthish",
                 "class": "fab fa-github"
             },
             {
-                "name": "instagram",
-                "url": "https://www.instagram.com",
-                "class": "fab fa-instagram"
+                "name": "linkedin",
+                "url": "https://www.linkedin.com/in/mukthish/",
+                "class": "fab fa-linkedin"
             }
         ],
         "image": "myProfile.jpg"
@@ -59,7 +58,7 @@
             "startDate": "2023",
             "description": "Successfully developed a responsive React website for the IEEE NSUT 24-hour hackathon registration. The website garnered 600+ participants, and 30+ teams were shortlisted for on-campus physical participation. Additionally, integrated it with Devfolio and other third-party tools to enhance accessibility and attractiveness.",
             "images": ["images/portfolio/hacknsut/p1.png"],
-            "url": "https://github.com",
+            "url": "",
             "technologies": [
                 {
                     "class": "devicon-react-original",
@@ -80,7 +79,7 @@
             "startDate": "2022",
             "description": "Contributed to the IEEE Delhi Section website for the International Conference on Electrical, Electronics, and Computer Engineering. The event featured regional-level webinars, lectures, and paper presentations by IEEE members and guests. Additionally, I collaborated with Region10 (Asia Region IEEE) members in multiple meetings.",
             "images": ["images/portfolio/delcon/p1.png"],
-            "url": "https://github.com",
+            "url": "",
             "technologies": [
                 {
                     "class": "devicon-react-original",
@@ -100,8 +99,11 @@
             "title": "IEEE NSUT Android App",
             "startDate": "2021",
             "description": "Central hub for students to explore the IEEE NSUT student branch. The platform offers a single-tap registration for upcoming events, widgets for direct communication with execomm members and developers, and an interactive image slider with a swipe-up animation to learn more about events. The society boasts 500+ active users participating in various events.",
-            "images": ["images/portfolio/android/p1.png"],
-            "url": "https://github.com",
+            "images": [
+                "images/portfolio/android/p1.jpeg",
+                "images/portfolio/android/p2.jpeg"
+            ],
+            "url": "",
             "technologies": [
                 {
                     "class": "devicon-java-plain",
