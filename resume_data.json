@@ -1,0 +1,168 @@
+{
+    "basic_info": {
+        "description_header": "Hi",
+        "description": "I'm Mukthish B. Result-driven graduate with 1 year of work experience in quality software development and related fields in C/C++ and R, seeking full-time roles in Software Development.",
+        "section_name": {
+            "about": "About me",
+            "projects": "Projects",
+            "skills": "Skills",
+            "experience": "Experience"
+        },
+        "name": "Mukthish B",
+        "titles": [
+            "Front-end Developer",
+            "Quantitative Analyst",
+            "Mobile App Developer"
+        ],
+        "social": [
+            {
+                "name": "github",
+                "url": "https://github.com/mukthish",
+                "class": "fab fa-github"
+            },
+            {
+                "name": "linkedin",
+                "url": "https://www.linkedin.com/in/mukthish/",
+                "class": "fab fa-linkedin"
+            }
+        ],
+        "image": "myProfile.jpg"
+    },
+    "projects": [
+        {
+            "title": "TTV Live Streaming",
+            "startDate": "2024",
+            "description": "Successfully built a Twitch-like streaming platform using the MERN stack and an RTMP server. This platform includes user login/registration, seamless integration with OBS for live streaming, and a real-time chat powered by Socket.IO for engaging user interactions.",
+            "images": [
+                "images/portfolio/ttv/p1.png",
+                "images/portfolio/ttv/p2.png"
+            ],
+            "url": "",
+            "technologies": [
+                {
+                    "class": "devicon-react-original",
+                    "name": "React"
+                },
+                {
+                    "class": "devicon-nodejs-plain",
+                    "name": "NodeJs"
+                },
+                {
+                    "class": "devicon-express-original",
+                    "name": "Express"
+                }
+            ]
+        },
+        {
+            "title": "HackNSUT",
+            "startDate": "2023",
+            "description": "Successfully developed a responsive React website for the IEEE NSUT 24-hour hackathon registration. The website garnered 600+ participants, and 30+ teams were shortlisted for on-campus physical participation. Additionally, integrated it with Devfolio and other third-party tools to enhance accessibility and attractiveness.",
+            "images": ["images/portfolio/hacknsut/p1.png"],
+            "url": "",
+            "technologies": [
+                {
+                    "class": "devicon-react-original",
+                    "name": "React"
+                },
+                {
+                    "class": "devicon-css3-plain",
+                    "name": "CSS"
+                },
+                {
+                    "class": "devicon-bootstrap-plain",
+                    "name": "Bootstrap"
+                }
+            ]
+        },
+        {
+            "title": "DELCON22",
+            "startDate": "2022",
+            "description": "Contributed to the IEEE Delhi Section website for the International Conference on Electrical, Electronics, and Computer Engineering. The event featured regional-level webinars, lectures, and paper presentations by IEEE members and guests. Additionally, I collaborated with Region10 (Asia Region IEEE) members in multiple meetings.",
+            "images": ["images/portfolio/delcon/p1.png"],
+            "url": "",
+            "technologies": [
+                {
+                    "class": "devicon-react-original",
+                    "name": "React"
+                },
+                {
+                    "class": "devicon-css3-plain",
+                    "name": "CSS"
+                },
+                {
+                    "class": "devicon-nodejs-plain",
+                    "name": "NodeJs"
+                }
+            ]
+        },
+        {
+            "title": "IEEE NSUT Android App",
+            "startDate": "2021",
+            "description": "Central hub for students to explore the IEEE NSUT student branch. The platform offers a single-tap registration for upcoming events, widgets for direct communication with execomm members and developers, and an interactive image slider with a swipe-up animation to learn more about events. The society boasts 500+ active users participating in various events.",
+            "images": [
+                "images/portfolio/android/p1.jpeg",
+                "images/portfolio/android/p2.jpeg"
+            ],
+            "url": "",
+            "technologies": [
+                {
+                    "class": "devicon-java-plain",
+                    "name": "Java"
+                },
+                {
+                    "class": "devicon-firebase-plain",
+                    "name": "Firebase"
+                }
+            ]
+        }
+    ],
+    "experience": [
+        {
+            "company": "Macquarie Group",
+            "title": "Quantitative Analyst",
+            "years": "05.2023 - 03.2024",
+            "mainTech": [""],
+            "technologies": ["C++", "Python", "Git", "Shell Scripting", "R"]
+        }
+    ],
+    "skills": {
+        "icons": [
+            {
+                "name": "Python",
+                "class": "devicon-python-plain"
+            },
+            {
+                "name": "C++",
+                "class": "devicon-cplusplus-plain"
+            },
+            {
+                "name": "R",
+                "class": "devicon-r-plain"
+            },
+            {
+                "name": "JavaScript",
+                "class": "devicon-javascript-plain"
+            },
+            {
+                "name": "Git",
+                "class": "devicon-git-plain"
+            },
+            {
+                "name": "React",
+                "class": "devicon-react-original"
+            },
+            {
+                "name": "Bootstrap",
+                "class": "devicon-bootstrap-plain"
+            },
+            {
+                "name": "Express",
+                "class": "devicon-express-original"
+            },
+            {
+                "name": "MySql",
+                "class": "devicon-mysql-plain"
+            }
+        ]
+    }
+}
