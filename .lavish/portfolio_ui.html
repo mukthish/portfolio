@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="transition-colors duration-300">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Overhaul Review</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: '#39FF14',
+            'accent-dim': 'rgba(57, 255, 20, 0.15)',
+            glassBg: 'rgba(13, 17, 23, 0.75)',
+            glassBorder: 'rgba(255, 255, 255, 0.09)',
+            bgDark: '#070A0F'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-panel {
+      background-color: rgba(13, 17, 23, 0.75) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.09) !important;
+    }
+    /* Ambient Glow Animations */
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.08; transform: scale(1); }
+      50% { opacity: 0.15; transform: scale(1.15); }
+    }
+    .animate-pulse-glow {
+      animation: pulse-glow 10s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-[#070A0F] text-slate-200 min-h-screen font-sans transition-colors duration-300 relative overflow-x-hidden selection:bg-accent/30 selection:text-white">
+  <!-- Node Graph Canvas -->
+  <canvas id="node-graph" class="fixed inset-0 w-full h-full pointer-events-none -z-20"></canvas>
+
+  <!-- Ambient glowing mesh behind everything -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none -z-30">
+    <div class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-accent/20 rounded-full mix-blend-screen filter blur-[140px] animate-pulse-glow" style="animation-duration: 8s;"></div>
+    <div class="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-accent/15 rounded-full mix-blend-screen filter blur-[130px] animate-pulse-glow" style="animation-duration: 10s; animation-delay: 2s;"></div>
+    <div class="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-accent/20 rounded-full mix-blend-screen filter blur-[140px] animate-pulse-glow" style="animation-duration: 12s; animation-delay: 4s;"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 glass-panel px-6 py-4 flex items-center justify-between transition-all">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center">
+        <span class="text-accent font-bold text-sm">M</span>
+      </div>
+      <span class="text-lg font-bold tracking-tight text-white">Mukthish Babu</span>
+    </div>
+    
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-4 text-sm font-semibold">
+        <a href="#projects" class="text-accent">Projects</a>
+        <a href="#sandbox" class="text-slate-300 hover:text-accent transition-colors">Sandbox</a>
+        <a href="#admin" class="text-slate-300 hover:text-accent transition-colors">Dashboard</a>
+      </div>
+      
+      <!-- Theme Switcher Button (Switches between Accent Colors in Dark Mode) -->
+      <button id="theme-toggle" class="p-2.5 rounded-full border border-glassBorder bg-slate-800/40 hover:bg-slate-800 transition-all shadow-sm group" title="Toggle Accent Theme">
+        <svg class="w-5 h-5 text-accent group-hover:rotate-45 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl w-full mx-auto p-6 sm:p-12 space-y-20 relative z-10">
+    
+    <!-- Hero / Intro Section -->
+    <section class="relative overflow-hidden rounded-3xl glass-panel shadow-2xl p-10 md:py-24 text-center flex flex-col items-center group transition-all duration-500 hover:border-accent/30">
+      <div class="absolute -z-10 -top-20 -left-20 w-80 h-80 bg-accent/25 rounded-full mix-blend-screen filter blur-[100px] opacity-10"></div>
+      
+      <h1 class="text-6xl md:text-8xl font-black mb-6 pb-6 tracking-tight text-transparent bg-gradient-to-b from-white to-slate-400 bg-clip-text">
+        Mukthish Babu.
+      </h1>
+      <p class="text-xl md:text-2xl max-w-2xl leading-relaxed text-slate-200 font-sans mb-8">
+        Full-Stack Engineer & Systems Architect.<br/>
+        I build robust backend pipelines, developer tools, and high-performance interactive interfaces.
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-3 max-w-3xl">
+        <span class="text-xs md:text-sm bg-slate-800/40 text-slate-200 px-4 py-2 rounded-full border border-glassBorder shadow-sm">TypeScript</span>
+        <span class="text-xs md:text-sm bg-slate-800/40 text-slate-200 px-4 py-2 rounded-full border border-glassBorder shadow-sm">Python</span>
+        <span class="text-xs md:text-sm bg-slate-800/40 text-slate-200 px-4 py-2 rounded-full border border-glassBorder shadow-sm">Rust</span>
+        <span class="text-xs md:text-sm bg-slate-800/40 text-slate-200 px-4 py-2 rounded-full border border-glassBorder shadow-sm">Go</span>
+        <span class="text-xs md:text-sm bg-slate-800/40 text-slate-200 px-4 py-2 rounded-full border border-glassBorder shadow-sm">C++</span>
+        <span class="text-xs md:text-sm bg-slate-800/40 text-slate-200 px-4 py-2 rounded-full border border-glassBorder shadow-sm">Next.js</span>
+        <span class="text-xs md:text-sm bg-slate-800/40 text-slate-200 px-4 py-2 rounded-full border border-glassBorder shadow-sm">FastAPI</span>
+        <span class="text-xs md:text-sm bg-slate-800/40 text-slate-200 px-4 py-2 rounded-full border border-glassBorder shadow-sm">React</span>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="space-y-8">
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-black text-white">Featured Projects</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Project Glass Card 1 -->
+        <div class="relative overflow-hidden rounded-3xl glass-panel shadow-2xl flex flex-col group hover:border-accent/40 transition-all duration-300">
+          <div class="absolute -z-10 -top-10 -left-10 w-40 h-40 bg-accent/20 rounded-full mix-blend-screen filter blur-[60px] opacity-[0.03] group-hover:opacity-10 transition-opacity duration-300"></div>
+          
+          <div class="p-8 flex-grow flex flex-col space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-mono">FEATURED</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300">Distributed Key-Value Store</h3>
+            <p class="text-slate-300 leading-relaxed text-sm">A highly available, horizontally scalable key-value database featuring Raft consensus, active-active replication, and sub-millisecond lookups.</p>
+            
+            <div class="space-y-3 flex-grow pt-2">
+              <div class="bg-slate-900/40 p-4 rounded-2xl border border-glassBorder">
+                <span class="text-slate-400 text-xs font-bold tracking-wider uppercase block mb-1">Challenge</span>
+                <p class="text-xs text-slate-200">Scale database operations across multiple regional clusters without introducing split-brain issues or high write latencies.</p>
+              </div>
+              <div class="bg-slate-900/40 p-4 rounded-2xl border border-glassBorder">
+                <span class="text-slate-400 text-xs font-bold tracking-wider uppercase block mb-1">Outcome</span>
+                <p class="text-xs text-slate-200">Achieved 99.999% uptime during chaos testing and reduced cross-region sync overhead by 40%.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-xs bg-slate-900/60 text-slate-200 px-3 py-1.5 rounded-full border border-glassBorder">Rust</span>
+              <span class="text-xs bg-slate-900/60 text-slate-200 px-3 py-1.5 rounded-full border border-glassBorder">gRPC</span>
+              <span class="text-xs bg-slate-900/60 text-slate-200 px-3 py-1.5 rounded-full border border-glassBorder">Raft</span>
+            </div>
+
+            <div class="flex items-center gap-6 pt-4 border-t border-glassBorder text-sm">
+              <a href="#" class="text-accent hover:text-accent/80 font-bold flex items-center gap-1 transition-colors">
+                <span>View Source</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
+              <a href="#" class="text-accent hover:text-accent/80 font-bold flex items-center gap-1 transition-colors">
+                <span>Live Demo</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Glass Card 2 -->
+        <div class="relative overflow-hidden rounded-3xl glass-panel shadow-2xl flex flex-col group hover:border-accent/40 transition-all duration-300">
+          <div class="absolute -z-10 -top-10 -left-10 w-40 h-40 bg-accent/20 rounded-full mix-blend-screen filter blur-[60px] opacity-[0.03] group-hover:opacity-10 transition-opacity duration-300"></div>
+          
+          <div class="p-8 flex-grow flex flex-col space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-slate-800 text-slate-400 border border-glassBorder font-mono">ARCHIVED</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300">LLVM Optimization Pipeline</h3>
+            <p class="text-slate-300 leading-relaxed text-sm">A custom optimization pass in LLVM focused on dead-code elimination and loop unrolling optimizations for specialized matrix architectures.</p>
+            
+            <div class="space-y-3 flex-grow pt-2">
+              <div class="bg-slate-900/40 p-4 rounded-2xl border border-glassBorder">
+                <span class="text-slate-400 text-xs font-bold tracking-wider uppercase block mb-1">Challenge</span>
+                <p class="text-xs text-slate-200">Matrix multiplication tasks experienced high instruction cache misses on edge TPU platforms.</p>
+              </div>
+              <div class="bg-slate-900/40 p-4 rounded-2xl border border-glassBorder">
+                <span class="text-slate-400 text-xs font-bold tracking-wider uppercase block mb-1">Outcome</span>
+                <p class="text-xs text-slate-200">Improved cache hit rates by 18% and accelerated matrix compute execution speeds by 1.25x.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-xs bg-slate-900/60 text-slate-200 px-3 py-1.5 rounded-full border border-glassBorder">C++</span>
+              <span class="text-xs bg-slate-900/60 text-slate-200 px-3 py-1.5 rounded-full border border-glassBorder">LLVM</span>
+            </div>
+
+            <div class="flex items-center gap-6 pt-4 border-t border-glassBorder text-sm">
+              <a href="#" class="text-accent hover:text-accent/80 font-bold flex items-center gap-1 transition-colors">
+                <span>View Source</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sandbox Section Mockup -->
+    <section id="sandbox" class="space-y-8 pt-8">
+      <div class="flex justify-between items-center">
+        <h2 class="text-3xl font-black text-white">Sandbox Playground</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <!-- Sidebar Navigation (Glass) -->
+        <div class="lg:col-span-1 rounded-3xl glass-panel p-6 space-y-6">
+          <div class="text-sm font-bold text-white pb-3 border-b border-glassBorder">Playground Tree</div>
+          <div class="space-y-4 text-xs font-semibold">
+            <div>
+              <span class="text-slate-400 block mb-1">↳ CORE UTILS</span>
+              <div class="pl-2 border-l border-glassBorder space-y-1">
+                <button class="w-full text-left py-2 px-3 rounded-xl bg-accent/15 text-accent font-bold">Image Optimizer</button>
+                <button class="w-full text-left py-2 px-3 rounded-xl text-slate-300 hover:bg-slate-800/40">Mock Generator</button>
+              </div>
+            </div>
+            <div>
+              <span class="text-slate-400 block mb-1">↳ DATABASES</span>
+              <div class="pl-2 border-l border-glassBorder space-y-1">
+                <button class="w-full text-left py-2 px-3 rounded-xl text-slate-300 hover:bg-slate-800/40">SQL Terminal</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- App Viewer Area (Glass) -->
+        <div class="lg:col-span-3 rounded-3xl glass-panel p-6 flex flex-col min-h-[400px]">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-glassBorder pb-4 mb-4 gap-2">
+            <div>
+              <h3 class="text-xl font-bold text-white">Image Optimizer</h3>
+              <p class="text-xs text-slate-400">Optimize and export png/jpg assets instantly.</p>
+            </div>
+            <div class="text-xs text-right">
+              <span class="text-slate-400">TARGET: </span>
+              <span class="text-accent font-bold">sandbox.mukthish.dev</span>
+            </div>
+          </div>
+          <!-- Sandbox View Frame -->
+          <div class="flex-grow bg-black/40 rounded-2xl border border-glassBorder relative overflow-hidden flex items-center justify-center min-h-[250px]">
+            <span class="text-slate-400 text-xs">[Embedded sandbox app frames render here]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Dashboard Section Mockup -->
+    <section id="admin" class="space-y-8 pt-8">
+      <div>
+        <h2 class="text-3xl font-black text-white">Management Console</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Project Forms Console (Glass) -->
+        <div class="rounded-3xl glass-panel p-8 space-y-6">
+          <h3 class="text-xl font-bold text-white">Add New Project</h3>
+          
+          <form class="space-y-4 text-xs font-semibold">
+            <div class="space-y-1.5">
+              <label class="text-slate-400">Project Title</label>
+              <input type="text" class="w-full bg-slate-900/60 border border-glassBorder rounded-xl px-4 py-3 text-white focus:border-accent focus:outline-none transition-colors" placeholder="e.g. Analytics Engine" />
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-slate-400">Description</label>
+              <textarea rows="3" class="w-full bg-slate-900/60 border border-glassBorder rounded-xl px-4 py-3 text-white focus:border-accent focus:outline-none transition-colors" placeholder="Project overview..."></textarea>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label class="text-slate-400">Tech Stack</label>
+                <input type="text" class="w-full bg-slate-900/60 border border-glassBorder rounded-xl px-4 py-3 text-white focus:border-accent focus:outline-none transition-colors" placeholder="React, Go, Postgres" />
+              </div>
+              <div class="space-y-1.5">
+                <label class="text-slate-400">Display Order</label>
+                <input type="number" class="w-full bg-slate-900/60 border border-glassBorder rounded-xl px-4 py-3 text-white focus:border-accent focus:outline-none transition-colors" placeholder="0" />
+              </div>
+            </div>
+
+            <button type="button" class="w-full bg-accent text-slate-950 hover:bg-accent/90 hover:shadow-[0_0_20px_rgba(57,255,20,0.4)] active:scale-95 text-xs font-bold uppercase tracking-wider py-4 rounded-xl transition-all duration-300">
+              Save Project Module
+            </button>
+          </form>
+        </div>
+
+        <!-- Existing Modules List (Glass) -->
+        <div class="rounded-3xl glass-panel p-8 space-y-6">
+          <h3 class="text-xl font-bold text-white">Active Modules</h3>
+          
+          <div class="space-y-3 overflow-y-auto max-h-[350px]">
+            <div class="flex justify-between items-center bg-slate-800/20 border border-glassBorder p-4 rounded-2xl">
+              <div>
+                <span class="text-white font-bold text-sm">Distributed Key-Value Store</span>
+                <div class="text-[10px] text-slate-400 font-mono mt-0.5">Order: 1 | Featured: Yes</div>
+              </div>
+              <div class="flex gap-2">
+                <button class="p-2 rounded-lg bg-slate-800 border border-glassBorder hover:text-accent transition-colors">Edit</button>
+                <button class="p-2 rounded-lg bg-slate-800 border border-glassBorder text-rose-500 hover:bg-rose-500/10 transition-colors">Delete</button>
+              </div>
+            </div>
+
+            <div class="flex justify-between items-center bg-slate-800/20 border border-glassBorder p-4 rounded-2xl">
+              <div>
+                <span class="text-white font-bold text-sm">LLVM Optimization Pipeline</span>
+                <div class="text-[10px] text-slate-400 font-mono mt-0.5">Order: 2 | Featured: No</div>
+              </div>
+              <div class="flex gap-2">
+                <button class="p-2 rounded-lg bg-slate-800 border border-glassBorder hover:text-accent transition-colors">Edit</button>
+                <button class="p-2 rounded-lg bg-slate-800 border border-glassBorder text-rose-500 hover:bg-rose-500/10 transition-colors">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Theme Toggle Implementation
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const colors = ['#39FF14', '#00F0FF', '#FF00F0', '#FFB800'];
+    let colorIndex = 0;
+
+    themeToggleBtn.addEventListener('click', () => {
+      colorIndex = (colorIndex + 1) % colors.length;
+      const nextColor = colors[colorIndex];
+      
+      // Update Tailwind CSS variable color dynamically
+      document.documentElement.style.setProperty('--color-accent', nextColor);
+      
+      // Update inline style representations
+      const styledElements = document.querySelectorAll('.text-accent');
+      styledElements.forEach(el => el.style.color = nextColor);
+      
+      const bgElements = document.querySelectorAll('.bg-accent');
+      bgElements.forEach(el => el.style.backgroundColor = nextColor);
+      
+      const borderElements = document.querySelectorAll('.hover\\:border-accent\\/40');
+      borderElements.forEach(el => {
+        el.addEventListener('mouseenter', () => el.style.borderColor = nextColor);
+        el.addEventListener('mouseleave', () => el.style.borderColor = 'rgba(255, 255, 255, 0.09)');
+      });
+    });
+
+    // Node Graph Canvas Implementation
+    const canvas = document.getElementById('node-graph');
+    const ctx = canvas.getContext('2d');
+    
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const nodes = [];
+    const nodeCount = 65;
+    const connectionDistance = 130;
+
+    class Node {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        // Base velocities
+        this.baseVx = (Math.random() - 0.5) * 0.4;
+        this.baseVy = (Math.random() - 0.5) * 0.4;
+        this.vx = this.baseVx;
+        this.vy = this.baseVy;
+        this.radius = Math.random() * 2 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        
+        // Dampen back to base velocities slowly
+        this.vx += (this.baseVx - this.vx) * 0.05;
+        this.vy += (this.baseVy - this.vy) * 0.05;
+
+        if (this.x < 0 || this.x > width) this.baseVx *= -1;
+        if (this.y < 0 || this.y > height) this.baseVy *= -1;
+      }
+    }
+
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push(new Node());
+    }
+
+    let mouse = { x: null, y: null, radius: 150 };
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+    window.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      
+      const accentColor = document.documentElement.style.getPropertyValue('--color-accent') || '#39FF14';
+
+      for (let i = 0; i < nodes.length; i++) {
+        const n1 = nodes[i];
+        
+        // Cursor interaction - Repulsion Force
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = n1.x - mouse.x;
+          const dy = n1.y - mouse.y;
+          const dist = Math.hypot(dx, dy);
+          
+          if (dist < mouse.radius) {
+            // Push nodes away from the cursor
+            const force = (mouse.radius - dist) / mouse.radius;
+            const forceX = (dx / dist) * force * 1.5;
+            const forceY = (dy / dist) * force * 1.5;
+            
+            n1.vx += forceX;
+            n1.vy += forceY;
+          }
+        }
+        
+        n1.update();
+        
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.beginPath();
+        ctx.arc(n1.x, n1.y, n1.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const n2 = nodes[j];
+          const dist = Math.hypot(n1.x - n2.x, n1.y - n2.y);
+          
+          if (dist < connectionDistance) {
+            ctx.lineWidth = (1 - dist / connectionDistance) * 0.7;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - dist / connectionDistance) * 0.15})`;
+            ctx.beginPath();
+            ctx.moveTo(n1.x, n1.y);
+            ctx.lineTo(n2.x, n2.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
