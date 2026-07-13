@@ -127,24 +127,7 @@ export default async function HomePage() {
                   {project.description}
                 </p>
 
-                <div className="space-y-3 flex-1 pt-1">
-                  <div className="bg-background/25 p-3.5 rounded-2xl border border-border/30">
-                    <span className="text-foreground/50 text-[10px] font-bold tracking-wider uppercase block mb-1">
-                      Challenge
-                    </span>
-                    <p className="text-xs text-foreground/90 leading-relaxed">
-                      {project.problem}
-                    </p>
-                  </div>
-                  <div className="bg-background/25 p-3.5 rounded-2xl border border-border/30">
-                    <span className="text-foreground/50 text-[10px] font-bold tracking-wider uppercase block mb-1">
-                      Outcome
-                    </span>
-                    <p className="text-xs text-foreground/90 leading-relaxed">
-                      {project.outcome}
-                    </p>
-                  </div>
-                </div>
+
 
                 <div className="flex flex-wrap gap-2 pt-2">
                   {project.techStack.map((tech) => (

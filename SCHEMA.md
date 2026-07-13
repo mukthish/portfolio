@@ -19,9 +19,7 @@ model Project {
   id          String   @id @default(uuid())
   title       String
   description String
-  problem     String
   techStack   String[] 
-  outcome     String
   githubUrl   String?
   liveUrl     String?
   isFeatured  Boolean  @default(false)

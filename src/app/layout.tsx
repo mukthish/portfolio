@@ -1,19 +1,7 @@
 import type { Metadata } from 'next'
-import { JetBrains_Mono, Roboto } from 'next/font/google'
 import './globals.css'
 import ThemeToggle from '@/components/ThemeToggle'
 import NodeGraph from '@/components/ui/NodeGraph'
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains',
-})
-
-const roboto = Roboto({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-roboto',
-})
 
 export const metadata: Metadata = {
   title: 'Portfolio & Sandbox',
@@ -28,6 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark bg-background text-foreground" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
         {/* Anti-theme-flash script using client-side theme detection */}
         <script
           dangerouslySetInnerHTML={{
@@ -48,7 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${roboto.variable} ${jetbrainsMono.variable} font-sans min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden`}
+        className="font-sans min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden"
       >
         {/* Background Canvas Node Graph */}
         <NodeGraph />

@@ -10,9 +10,7 @@ interface Project {
   id: string
   title: string
   description: string
-  problem: string
   techStack: string[]
-  outcome: string
   githubUrl: string | null
   liveUrl: string | null
   isFeatured: boolean
@@ -41,8 +39,6 @@ export default function AdminDashboard({ initialProjects, initialHeroSettings }:
   const [editingProject, setEditingProject] = useState<Partial<Project> | null>(null)
   const [projectTitle, setProjectTitle] = useState('')
   const [projectDescription, setProjectDescription] = useState('')
-  const [projectProblem, setProjectProblem] = useState('')
-  const [projectOutcome, setProjectOutcome] = useState('')
   const [projectTechStack, setProjectTechStack] = useState('')
   const [projectGithub, setProjectGithub] = useState('')
   const [projectLive, setProjectLive] = useState('')
@@ -69,8 +65,6 @@ export default function AdminDashboard({ initialProjects, initialHeroSettings }:
     setEditingProject(project)
     setProjectTitle(project.title)
     setProjectDescription(project.description)
-    setProjectProblem(project.problem)
-    setProjectOutcome(project.outcome)
     setProjectTechStack(project.techStack.join(', '))
     setProjectGithub(project.githubUrl || '')
     setProjectLive(project.liveUrl || '')
@@ -82,8 +76,6 @@ export default function AdminDashboard({ initialProjects, initialHeroSettings }:
     setEditingProject(null)
     setProjectTitle('')
     setProjectDescription('')
-    setProjectProblem('')
-    setProjectOutcome('')
     setProjectTechStack('')
     setProjectGithub('')
     setProjectLive('')
@@ -98,8 +90,6 @@ export default function AdminDashboard({ initialProjects, initialHeroSettings }:
     const payload = {
       title: projectTitle,
       description: projectDescription,
-      problem: projectProblem,
-      outcome: projectOutcome,
       techStack: projectTechStack.split(',').map((s) => s.trim()).filter(Boolean),
       githubUrl: projectGithub || null,
       liveUrl: projectLive || null,
@@ -297,29 +287,7 @@ export default function AdminDashboard({ initialProjects, initialHeroSettings }:
                 />
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-foreground/60 block">Challenge (Problem Statement)</label>
-                <textarea
-                  value={projectProblem}
-                  onChange={(e) => setProjectProblem(e.target.value)}
-                  required
-                  rows={2}
-                  className="w-full bg-background/50 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:border-accent focus:outline-none transition-colors"
-                  placeholder="What was the core problem?"
-                />
-              </div>
 
-              <div className="space-y-1.5">
-                <label className="text-foreground/60 block">Outcome</label>
-                <textarea
-                  value={projectOutcome}
-                  onChange={(e) => setProjectOutcome(e.target.value)}
-                  required
-                  rows={2}
-                  className="w-full bg-background/50 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:border-accent focus:outline-none transition-colors"
-                  placeholder="What was the result or system impact?"
-                />
-              </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">

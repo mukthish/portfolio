@@ -26,9 +26,9 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json()
-    const { title, description, problem, techStack, outcome, githubUrl, liveUrl, isFeatured, displayOrder } = body
+    const { title, description, techStack, githubUrl, liveUrl, isFeatured, displayOrder } = body
 
-    if (!title || !description || !problem || !outcome) {
+    if (!title || !description) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
@@ -36,9 +36,7 @@ export async function POST(request: Request) {
       data: {
         title,
         description,
-        problem,
         techStack: techStack || [],
-        outcome,
         githubUrl,
         liveUrl,
         isFeatured: isFeatured ?? false,
