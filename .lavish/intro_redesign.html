@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intro Redesign</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes blob {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+    .animate-blob { animation: blob 7s infinite; }
+    .animation-delay-2000 { animation-delay: 2s; }
+  </style>
+</head>
+<body class="bg-base-200 min-h-screen p-8 text-base-content">
+  <div class="max-w-4xl mx-auto space-y-12">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">Introduction Redesign Options</h1>
+      <p class="text-base-content/70">Review the options below. Once you approve one, I'll integrate it into your Next.js app.</p>
+    </div>
+    
+    <!-- Option 1: Modern Hero -->
+    <div class="card bg-base-100 shadow-xl border border-base-300">
+      <div class="card-body">
+        <h2 class="card-title text-sm text-primary mb-4">Option 1: Modern Hero</h2>
+        <div class="py-12">
+          <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6 pb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">PSENTAUR</h1>
+          <p class="text-xl md:text-2xl font-light leading-relaxed max-w-2xl opacity-80">
+            Full-Stack Engineer & Systems Architect. I build robust backend pipelines, developer tools, and high-performance interactive interfaces.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option 2: Terminal Style (upgraded) -->
+    <div class="card bg-[#0a0a0a] text-[#00ff00] shadow-xl border border-[#333]">
+      <div class="card-body">
+        <h2 class="card-title text-sm text-[#00ff00] opacity-50 mb-4">Option 2: Upgraded Terminal</h2>
+        <div class="font-mono py-8 space-y-6">
+          <div class="flex items-center gap-2 text-[#00ff00] text-sm mb-8">
+            <span class="animate-pulse">●</span>
+            <span>SYSTEM ONLINE // PORTFOLIO_V2.0</span>
+          </div>
+          <div>
+            <p class="text-[#888] mb-2">$ whoami</p>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">PSENTAUR</h1>
+            <p class="text-lg md:text-xl text-[#ccc] max-w-2xl leading-relaxed">
+              Full-Stack Engineer & Systems Architect. I build robust backend pipelines, developer tools, and high-performance interactive interfaces.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Option 3: Glassmorphism -->
+    <div class="card bg-base-100/50 backdrop-blur-xl shadow-xl border border-base-200 relative overflow-hidden">
+      <div class="absolute -z-10 top-0 left-1/4 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-[80px] opacity-40 animate-blob"></div>
+      <div class="absolute -z-10 top-0 right-1/4 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-[80px] opacity-40 animate-blob animation-delay-2000"></div>
+      <div class="card-body">
+        <h2 class="card-title text-sm opacity-70 mb-4">Option 3: Glassmorphism</h2>
+        <div class="py-12 relative z-10 text-center flex flex-col items-center">
+          <h1 class="text-6xl md:text-8xl font-bold mb-6 pb-4 tracking-tight">Psentaur.</h1>
+          <p class="text-xl md:text-2xl max-w-2xl leading-relaxed opacity-80 font-medium">
+            Full-Stack Engineer & Systems Architect.<br/>
+            I build robust backend pipelines, developer tools, and high-performance interactive interfaces.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
