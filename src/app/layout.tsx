@@ -39,6 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body
+        suppressHydrationWarning
         className="font-sans min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden"
       >
         {/* Background Canvas Node Graph */}
