@@ -2,10 +2,16 @@ import type { Metadata } from 'next'
 import './globals.css'
 import ThemeToggle from '@/components/ThemeToggle'
 import NodeGraph from '@/components/ui/NodeGraph'
+import { prisma } from '@/lib/prisma'
 
-export const metadata: Metadata = {
-  title: 'Portfolio & Sandbox',
-  description: 'Engineering Portfolio and Interactive Sandbox',
+export async function generateMetadata(): Promise<Metadata> {
+  const heroSettings = await prisma.heroSettings.findFirst()
+  const title = heroSettings?.name || 'Portfolio'
+
+  return {
+    title,
+    description: 'Engineering Portfolio and Interactive Sandbox',
+  }
 }
 
 export default function RootLayout({

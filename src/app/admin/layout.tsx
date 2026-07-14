@@ -19,7 +19,7 @@ export default async function AdminLayout({
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-border pb-4 font-mono">
         <div>
-          <h1 className="text-xl font-bold text-accent">~/admin_dashboard</h1>
+          <h1 className="text-xl font-bold text-accent">Admin Dashboard</h1>
           <p className="text-xs text-foreground/60">Logged in as: {session.user?.email}</p>
         </div>
         <div className="flex items-center gap-4">
